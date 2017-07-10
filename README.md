@@ -1205,7 +1205,14 @@ I'll add a router file within the spa-demo asset pipeline, henceforth AP. I'll b
 })();
 ```
 
-I'll require the router, module and constant app files within the spa-demo.js for angular to work. Reloading the browser I see the following;
+I'll require the router, module and constant app files within the spa-demo.js for angular to work. Reloading the browser, errors were been thrown due to angular connectivity issues with it's libraries but had to fix that from the UI controller redirect route that I had declared in the index fn. 
+
+Et voila. No errors in console, life is good again. 
+![angular](https://user-images.githubusercontent.com/13242902/28041530-214430ba-65ca-11e7-898c-09dbf1418e0d.png)
+<hr>
+
+## SPA Application Module External Packaging
+
 
 
 
