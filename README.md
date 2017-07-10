@@ -1,5 +1,4 @@
 <div align="center">
-<<<<<<< HEAD
 <h1>Capstone Demo App<em> Module 1</em></h1> 
 <h2>Software Development Documentation</h2>
   <h3>
@@ -8,15 +7,6 @@
     </a>
     <span> | </span>
        <a href="#">
-
-<h1>Capstone Demo App<em> Module 2</em></h1> 
-<h2>Software Development Documentation</h2>
-  <h3>
-    <a href="#">
-      Module 1
-    </a>
-    <span> | </span>
-       
       Module 2
     </a>
     <span> | </span>
@@ -70,8 +60,6 @@
 - [Web Service Finishing Touches](#web-service-finishing-touches)
 	- [RDBMS side](#rdbms-side)
 	- [Mongo side](#mongo-side)
-    - [RDBMS side](#rdbms-side)
-    - [Mongo side](#mongo-side)
 - [CORS](#cors)
 - [API Deployment](#api-deployment)
 
@@ -164,10 +152,6 @@ I'll run a scaffold with the name of foos to implement the basic core functional
 	  <th>Name</th>
 	  <th colspan="3"></th>
 	</tr>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
   </thead>
 
   <tbody>
@@ -200,13 +184,6 @@ If I ran the server in production mode (**rails s -production**) then view the p
 	 WEBrick/1.3.1 (Ruby/2.3.1/2016-04-26) at
 	 localhost:3000
 	</ADDRESS>
-    <H1>Internal Server Error</H1>
-    Missing `secret_token` and `secret_key_base` for 'production' environment, set these values in `config/secrets.yml`
-    <HR>
-    <ADDRESS>
-     WEBrick/1.3.1 (Ruby/2.3.1/2016-04-26) at
-     localhost:3000
-    </ADDRESS>
   </BODY>
 </HTML>
 
@@ -239,13 +216,8 @@ Solutions for expensive connections are;
 - Concatenate resources (Fewer resource files & fewer connections)
 - Resources reloaded per page. (Turbolinks turns a multi-page server-side application into a pseudo single-page application)
 - Address Large Contents 
-<<<<<<< HEAD
 	* Compress JS & CSS source code
 	* Leverage a Content Distribution Source (CDN) eg cloudflare
-=======
-    * Compress JS & CSS source code
-    * Leverage a Content Distribution Source (CDN) eg cloudflare
->>>>>>> asset-pipeline
 
 In the case of this app, *uglifier* and *sass rails* gems are compressing my JS and CSS assets respectively. This can easily be toggled in config/environments/production.rb with the following two liners;
 
@@ -301,7 +273,6 @@ gem 'jquery-rails', '~> 4.2', '>= 4.1.0'
 gem 'jbuilder', '~> 2.0', '>= 2.6.0'
 
 group :development do 
-<<<<<<< HEAD
 	gem 'spring', '~>2.0', '>=2.0.0'
 end
 
@@ -317,23 +288,6 @@ end
 
 group :production do 
 	gem 'rails_12factor', '~>0.0', '>= 0.0.3'
-=======
-    gem 'spring', '~>2.0', '>=2.0.0'
-end
-
-group :development, :test do
-    gem 'webrick', '~>1.3', '>=1.3.1'
-#   gem 'sqlite3', '~>1.3', '>=1.3.12'
-#   gem 'pg', '0.20'
-    gem 'byebug', '~>9.0', '>=9.0.6'
-    gem 'rspec-rails', '~> 3.5', '>=3.5.2'
-    gem 'pry-byebug', '~>3.4', '>=3.4.0'
-    gem 'httparty', '~>0.14', '>=0.14.0'
-end
-
-group :production do 
-    gem 'rails_12factor', '~>0.0', '>= 0.0.3'
->>>>>>> asset-pipeline
 
 end
 
@@ -344,17 +298,10 @@ gem 'mongoid', '~> 5.1', '>5.1.5'
 # Gems for implementing Angular SPA
 # https://rails-assets.org provides frictionless proxy between Bundler and Bower.
 source 'https://rails-assets.org' do 
-<<<<<<< HEAD
 	gem 'rails-assets-bootstrap', '~>3.3', '>= 3.3.7'
 	gem 'rails-assets-angular', '~>1.5', '>= 1.5.8'
 	gem 'rails-assets-angular-ui-router', '~>0.3', '>= 0.3.1'
 	gem 'rails-assets-angular-resource', '~>1.5', '>= 1.5.8'
-=======
-    gem 'rails-assets-bootstrap', '~>3.3', '>= 3.3.7'
-    gem 'rails-assets-angular', '~>1.5', '>= 1.5.8'
-    gem 'rails-assets-angular-ui-router', '~>0.3', '>= 0.3.1'
-    gem 'rails-assets-angular-resource', '~>1.5', '>= 1.5.8'
->>>>>>> asset-pipeline
 end
 ```
 
@@ -383,11 +330,7 @@ app/assets/
 ├── javascripts
 │   └── spa-demo.js
 └── stylesheets
-<<<<<<< HEAD
 	└── spa-demo.css
-=======
-    └── spa-demo.css
->>>>>>> asset-pipeline
 config/initializers
 ├── assets.rb
 ├── filter_parameter_logging.rb
@@ -402,7 +345,6 @@ To check if all is working fine, I'll change the "under construction" on the UI 
 ```erb
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
@@ -416,21 +358,6 @@ To check if all is working fine, I'll change the "under construction" on the UI 
 				<span>(from app/views/ui/index.html.erb)</span>
 			</div>
 	</body>
-=======
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <%= stylesheet_link_tag "spa-demo", :media => "all" %>
-        <%= javascript_include_tag "spa-demo" %>
-    </head>
-    <body>
-            <div class="container">
-                <h1>Hello</h1>
-                <span>(from app/views/ui/index.html.erb)</span>
-            </div>
-    </body>
->>>>>>> asset-pipeline
 </html>
 ```
 
@@ -444,7 +371,6 @@ The source file from my localhost is linking to my manifest files correctly as e
 ```HTML
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
@@ -458,21 +384,6 @@ The source file from my localhost is linking to my manifest files correctly as e
 				<span>(from app/views/ui/index.html.erb)</span>
 			</div>
 	</body>
-=======
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" media="all" href="/assets/spa-demo.self-9ad9eaaba8b4b6e18301e558f0123c9a24b7103b282b518b0843ac3e4973db77.css?body=1" />
-        <script src="/assets/spa-demo.self-d8a46cfe42f3ef5341495e8ac3b418bd2dc954dc8a7bcfe884bbb23fe57d69c0.js?body=1"></script>
-    </head>
-    <body>
-            <div class="container">
-                <h1>Hello</h1>
-                <span>(from app/views/ui/index.html.erb)</span>
-            </div>
-    </body>
->>>>>>> asset-pipeline
 </html>
 ```
 
@@ -484,7 +395,6 @@ Awesome! I'll add data (eg *require bootstrap*, *require jquery*, etc) in the ma
 ```HTML
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
@@ -492,15 +402,6 @@ Awesome! I'll add data (eg *require bootstrap*, *require jquery*, etc) in the ma
 		<link rel="stylesheet" media="all" href="/assets/bootstrap.self-96a1cbefba2066f7a3e85de9a655597a65e7514c6fa4c3168e6b2d7dd3bc9b77.css?body=1" />
 <link rel="stylesheet" media="all" href="/assets/spa-demo.self-a83dbd88eb86e6627c720c95c1cbe134c9b69cdb8fe01361b59e4c71f2dea67c.css?body=1" />
 		<script src="/assets/jquery2.self-25ca496239ae8641a09627c8aace5863e7676e465fbb4ce81bc7eb78c4d15627.js?body=1"></script>
-=======
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-compatible" content="ie=edge, chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" media="all" href="/assets/bootstrap.self-96a1cbefba2066f7a3e85de9a655597a65e7514c6fa4c3168e6b2d7dd3bc9b77.css?body=1" />
-<link rel="stylesheet" media="all" href="/assets/spa-demo.self-a83dbd88eb86e6627c720c95c1cbe134c9b69cdb8fe01361b59e4c71f2dea67c.css?body=1" />
-        <script src="/assets/jquery2.self-25ca496239ae8641a09627c8aace5863e7676e465fbb4ce81bc7eb78c4d15627.js?body=1"></script>
->>>>>>> asset-pipeline
 <script src="/assets/bootstrap/bootstrap.self-b38817c3e3a3049abb1fc08dd6ae448b23330f8453226efdb074710209474f75.js?body=1"></script>
 <script src="/assets/bootstrap.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1"></script>
 <script src="/assets/angular/angular.self-cbf63dfe20595c76ecb6316dfb062fd913b424590ff80a8c5ada4bd82672b703.js?body=1"></script>
@@ -510,7 +411,6 @@ Awesome! I'll add data (eg *require bootstrap*, *require jquery*, etc) in the ma
 <script src="/assets/angular-resource/angular-resource.self-7cce3b8707c34fb59333dba5b82c7f6668fe3a0d75b285f65421c851161aae02.js?body=1"></script>
 <script src="/assets/angular-resource.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1"></script>
 <script src="/assets/spa-demo.self-29493403fb85d1b36bde5cadef5f763bc498e1ed4a2fa791065972f55d74712f.js?body=1"></script>
-<<<<<<< HEAD
 	</head>
 	<body>
 			<div class="container">
@@ -518,15 +418,6 @@ Awesome! I'll add data (eg *require bootstrap*, *require jquery*, etc) in the ma
 				<span>(from app/views/ui/index.html.erb)</span>
 			</div>
 	</body>
-=======
-    </head>
-    <body>
-            <div class="container">
-                <h1>Hello</h1>
-                <span>(from app/views/ui/index.html.erb)</span>
-            </div>
-    </body>
->>>>>>> asset-pipeline
 </html>
 ```
 
@@ -577,23 +468,15 @@ There are so many Web Client Development Tools floating arround; one of my favou
 
 **Gulp Tasks** is based on: 
 - Node Package Manager 
-<<<<<<< HEAD
 	- part of NodeJS 
 	- Manages llow levelpackages like Bower, Gulp & Gulp Tasks 
 - Bower Package Manager 
 	- Manages higher-level packages like ngular, Bootstrap, etc. 
-=======
-    - part of NodeJS 
-    - Manages llow levelpackages like Bower, Gulp & Gulp Tasks 
-- Bower Package Manager 
-    - Manages higher-level packages like ngular, Bootstrap, etc. 
->>>>>>> asset-pipeline
 
 Anyway, sorry for the boredom with too much details. I'll grab a cup of coffee and get to coding momentariy ...
 
 ## Gulp Development Setup
 
-<<<<<<< HEAD
 Before I do anything, I'll create a build tree and add it to **.gitignore** that way it wont be commited to git, this is just to control what is added to git and what is not. I really dont want my Source and Buid Trees to be pushed to GitHub or Heroku, what I do and can allow to go public is the Distribution Tree.
 
 ## Gulp installation 
@@ -1186,18 +1069,19 @@ So I have my external web application been deployed and serviced by Rails as a w
 
 It's time to get greedy. At the root of the app, I have my "under construction page" but my Heroku deployment that contains my Asset Pipeline implementation is serving up the web app from the asset pipeline. I need something similar. 
 
-Next within my app UI controller, I'll add an index method with a redirect to client/index.html 
+Within my app UI controller, I'll add an index method with a redirect to client/index.html 
 
-If I go to my localhost client and inspect traffic, I see there is a temporary redirect. It can't quite find what is needed but it's aware of that (*304 Not Modified*). It's the client to display stuff from cache and proxy has no worries. 
+If I go to my localhost client and inspect traffic, I see there is a temporary redirect. It can't quite find what is needed but it's aware of that (*304 Not Modified*). It's the client's task to display stuff from cache so the proxy has no worries. 
 
+*Examining the network*
 ![screen shot 2017-07-09 at 11 25 42](https://user-images.githubusercontent.com/13242902/27992775-ed8c903e-649b-11e7-9a1c-8d5ec0d1910f.png)
 <hr>
 
+*Status code of 304 Not Modified*
 ![304_modified](https://user-images.githubusercontent.com/13242902/27992774-ed89b3b4-649b-11e7-9888-002ce10919f7.png)
 <hr>
 
-It follows the ridirect to index.html via the routes with a successful request (200 OK).
-
+*Redirect to index.html via the routes with a successful request (200 OK)*
 ![200_ok](https://user-images.githubusercontent.com/13242902/27992769-d324e836-649b-11e7-9f28-4fe1e940147c.png) 
 <hr>
 
@@ -1229,12 +1113,103 @@ Firstly, I'll merge the asset pipeline and the external rails branches to master
 ![screen shot 2017-07-09 at 13 53 37](https://user-images.githubusercontent.com/13242902/27993643-1b2ac99a-64ae-11e7-8da3-b6adce1dc569.png)
 <hr>
 
-
 I solved conflicting issues when merging the branches and my local host is working correctly. Running gulp will trigger browser synch to initialise my localhost at port 8080 and that will actually run in concert with Rails. 
 
 Successfully merged asset-pipeline branch to ap_external.
 ![Merge](https://user-images.githubusercontent.com/13242902/27993829-700cc3de-64b1-11e7-8c67-040b45073a25.png)
 <hr>
+
+I wouldn't like to leave the ap_external branch on it's own like that, so I'll go ahead and merge it to master. Hopefully no conflicts will arise now. 
+
+![gitMerge](https://user-images.githubusercontent.com/13242902/27993929-e6a85cfa-64b2-11e7-87fb-35bff6989b3c.png)
+<hr>
+
+
+![screen shot 2017-07-09 at 14 29 17](https://user-images.githubusercontent.com/13242902/27993940-09aa93b2-64b3-11e7-8181-d2938a960943.png)
+<hr> 
+
+That went smoothly, so I can now delete the branch without hassles as it's not representing a fork. I'll now create a new branch for my Single Page Application development. 
+
+## SPA Application Module 
+
+Like in course five, I'll start building an Angular application. I won't dwell much explaining stuff like I did in gulp (which was a new tech), so I'll just dive in and code without getting into details. 
+
+I will be looking at; 
+* Creating a basic Angular application
+	* Angular application/Root module.
+	* Constant component 
+	* Config component (UI-Router)
+		- Single state 
+	* One HTML page 
+* ERB Files 
+* Javascript manifest
+
+My application will reside within a a folder (spa-demo) in the app/assets/javascripts path. The SPA page will reside in  app/assets/javascripts/spa-demo/pages. 
+
+I've created the first module (spa-demo) with a dependency of "ui.router" which I've declared within an IIFE for it to stay global.
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo", [
+    "ui.router",
+    ]);
+})();
+
+```
+
+I've created a page (main.html) with basic HTML in pages folder as well. I'll create (in root) a file for constants which I will rectify when doing refactoring whilst addressing problems which I expect to arise. (**app.constant.js.erb**) {Notice anything unique? The extension => processed as a pipeline}
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo")
+    .constant("spa-demo.APP_CONFIG", {
+      main_page_html: "<%= asset_path('spa-demo/pages/main.html') %>"
+      <!--Unaona the asset path function? Good!-->
+    });
+
+})();
+```
+
+I've added another constant file withing spa-demo folder in the external client side without erb tags. This is to be consistent with the asset pipeline approach.  
+
+I'll add a router file within the spa-demo asset pipeline, henceforth AP. I'll be injecting stateProvider, urlRouterProvider & spa-demo.config.APP_CONFIG (To point at HTML page). I'll use a technique that's verbose in naming components to accompany their modules. (At least it's clear where stuff is coming from).
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo")
+    .config(RouterFunction);
+
+  RouterFunction.$inject = ["$stateProvider",
+                            "$urlRouterProvider",
+                            "spa-demo.config.APP_CONFIG"];
+
+  function RouterFunction($stateProvider, $urlRouterProvider, APP_CONFIG) {
+    $stateProvider
+    .state("home",{
+      url: "/subjects",
+      templateUrl: APP_CONFIG.subjects_page_html
+    })
+
+
+        $urlRouterProvider.otherwise("/subjects");
+  }
+})();
+```
+
+I'll require the router, module and constant app files within the spa-demo.js for angular to work. Reloading the browser I see the following;
+
+
+
+
 
 
 
