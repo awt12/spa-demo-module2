@@ -1322,6 +1322,66 @@ I'll add a service to contact the backend API server. (I'll use a factory as you
 ```
 
 
+## Sample Resource CRUD Controller Skeleton 
+
+I will be going through a Sample Resource Crud Controller which will be dropped in the Rails backend by Foo service and injected in the Foo Controller. The controller will process the View. (Remember MVC?)
+
+![mvc](https://user-images.githubusercontent.com/13242902/28089675-136447b2-668a-11e7-8371-c37ad29d7d49.png)
+<hr>
+
+I'll create a foo's controller in Rails and add a skeleton code with modules and CRUD functions. I'll update the manifest as well otherwise things will break.
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo.foos")
+    .controller("spa-demo.foos.FoosController", FoosController);
+
+  FoosController.$inject = ["spa-demo.foos.Foo"];
+
+  function FoosController(Foo) {
+      var vm = this;
+      vm.foos;
+      vm.foo;
+
+      activate();
+      return;
+      ////////////////
+      
+      function activate() {
+       newFoo();
+      }  
+      function newFoo() {
+        vm.foo = new Foo();
+      }
+      function handleError(response) {
+        console.log(response);
+      } 
+      function edit(object, index) {
+     
+      }
+
+      function create() {
+      
+      }
+
+      function update() {
+     
+      }
+
+      function remove() {
+             
+      }
+
+      function removeElement(elements, element) {
+      
+      }      
+  }    
+})();
+
+```
 
 
 
