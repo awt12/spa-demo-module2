@@ -1248,6 +1248,40 @@ I'll be going through;
 	- External 
 * Defining the location of the API server 
 
+I'll create a new branch and kick start rails server. I love developing from bottom-up (bear with me) so I'll start with Configs. Within the app.constant.js.erb, I'll add an environment variable for the server url, and will mirror the same thing at the external env (client). The line of code is shown below with the hash rocket. At the external env, the code will be a localhost:3000 which will sub the environment variable. So now I've added where to contact the API, lemmie get rolling....
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo")
+    .constant("spa-demo.APP_CONFIG", {
+    	server_url: "<%= ENV['RAILS_API_URL'] %>", /*  <= this one for rails */
+    /*	server_url: "http://localhost:3000",   <= this one for external env */
+    	
+      main_page_html: "<%= asset_path('spa-demo/pages/main.html') %>"
+    });
+
+})();
+```
+
+In Rails (whenever I say this, envision rails asset pipeline environment), under spa-demo, I'll add a folder (foo) and inside foo a file (**foos.module.js**) with the following module and dependency;
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo.foos", [
+      "ngResource"
+    ]);
+})();
+```
+
+I'll then require the foos file in spa-demo.js manifest and the external (whenever I say this, envision client, the hybrid in angular) **index.html** file. No errors (yet) after refreshing page. (A programmers dream :-). So a minor start here, and because angular was very well tackled in course 5, I won't go in depth or add lines and lines of codes. 
+
+## Sample Resource Service Skeleton 
 
 
 
