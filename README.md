@@ -1283,8 +1283,43 @@ I'll then require the foos file in spa-demo.js manifest and the external (whenev
 
 ## Sample Resource Service Skeleton 
 
+I'll be going through;
 
+* Sample Resource Service. (communication with the backend Rails server for the Angular application)
+* ngResource (Provides a REST based interface above the HTTP service)
+* Angular factory
 
+At this point, I have my backend Rail server and the set-up of Angular app. When the user navigates to a page with certain elements, eg *sd-foos*, angular will try to locate them in directives eg *foosVM*. The direcrive will then declare an HTML template and a controller. The controller with data and call-backs will rely on the service into the controller (Rails) when instantiated.
+
+The controller will make use of the service (my case foo service) in order to access data in the backend managed with Rails. If successful, a call response to the controller is made triggering a view model with data fetched. 
+
+![Sample_flow](https://user-images.githubusercontent.com/13242902/28088139-068058d8-6685-11e7-9645-aae072ce0ff8.png)
+<hr>
+
+I'll add a service to contact the backend API server. (I'll use a factory as you can see below, code is pretty readable, no need to go through it). Before I get carried away, I'll add the service in the spa-demo.js manifest.
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo.foos")
+    .factory("spa-demo.foos.Foo", FooFactory);
+
+  FooFactory.$inject = ["$resource", "spa-demo.config.APP_CONFIG"];
+  function FooFactory($resource, APP_CONFIG) {
+    return $resource(APP_CONFIG.server_url + "/api/foos/:id",
+      { id: '@id'},
+      { 
+        update: { method: "PUT" }
+      }
+      );
+  }
+
+  }  
+})();
+
+```
 
 
 
