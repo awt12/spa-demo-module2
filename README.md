@@ -1240,6 +1240,16 @@ Simply put, I will be making the Frontend communicate with the Backend.
 
 ## Sample Resource CRUD Module. 
 
+I'll be going through;
+* Adding UI access to foo resources  
+	- Start with the foos module 
+* Updating manifests 
+	- Asset Pipeline
+	- External 
+* Defining the location of the API server 
+
+
+
 
 
 
