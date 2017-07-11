@@ -1208,14 +1208,37 @@ I'll add a router file within the spa-demo asset pipeline, henceforth AP. I'll b
 I'll require the router, module and constant app files within the spa-demo.js for angular to work. Reloading the browser, errors were been thrown due to angular connectivity issues with it's libraries but had to fix that from the UI controller redirect route that I had declared in the index fn. 
 
 Et voila. No errors in console, life is good again. 
-![angular](https://user-images.githubusercontent.com/13242902/28041530-214430ba-65ca-11e7-898c-09dbf1418e0d.png)
+![Angular](https://user-images.githubusercontent.com/13242902/28042069-0b87ea08-65cc-11e7-9c14-6e865934b55a.png)
 <hr>
 
 ## SPA Application Module External Packaging
 
+I will carry on and delve in the external environment of my application, touching on both the build and the distribution. I will then use gulp to further test it's functionalities. 
 
+On the client side, I've added similar files as the asset pipeline's spa-demo, with minor tweaks, nothing new. If I run gulp now, browser-synch will run successfully but if I inspect the page, in config it fails to inject Angular dependencies. To solve, I've declared my JS file right inside the HTML file and that solved the error and displayed my low level page.
 
+```html
+...........
+    <script src='spa-demo/app.module.js'></script>
+    <script src='spa-demo/app.router.js'></script>
+    <script src='spa-demo/app.constant.js'></script>  
+........... 
+```
 
+I've now run the **gulp dist** command to create a distribuition area. Had some issues again with dependencies but tweaked some minor tasks in gulp.js and crisis was averted. "Note to self; Experimenting with code sometimes sorts out some errors". 
+
+At this point, External is working, Distribution is working and so is Rails.
+
+![all_in_one](https://user-images.githubusercontent.com/13242902/28085852-3c18c078-667d-11e7-80c2-fc2746d2a46e.png)
+<hr>
+
+One thing to point out with the distribution page is the concatenation of JS with the vendodr stuff (you can check the source code {warning: it's uglified}). Later if we want we can add stuff in a minified concatenated form. 
+
+# Angular/Rails Communications 
+
+Simply put, I will be making the Frontend communicate with the Backend. 
+
+## Sample Resource CRUD Module. 
 
 
 
