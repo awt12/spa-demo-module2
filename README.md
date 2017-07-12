@@ -1296,7 +1296,7 @@ The controller will make use of the service (my case foo service) in order to ac
 ![Sample_flow](https://user-images.githubusercontent.com/13242902/28088139-068058d8-6685-11e7-9645-aae072ce0ff8.png)
 <hr>
 
-I'll add a service to contact the backend API server. (I'll use a factory as you can see below, code is pretty readable, no need to go through it). Before I get carried away, I'll add the service in the spa-demo.js manifest.
+I'll add a service to contact the backend API server. (I'll use a factory as you can see below, code is pretty readable, no need to go through it). Before I get carried away, I'll add the service in the spa-demo.js manifest (Rails) and Client.
 
 ```javascript
 (function() {
@@ -1384,9 +1384,77 @@ I'll create a foo's controller in Rails and add a skeleton code with modules and
 ```
 
 
+## Sample Directive and Template Page 
+
+I will now be delving in directives. I'll momentariy use a sample one that will declare an HTML template sample page with a controller to be available on that page. 
+
+From the Sample Controller Flow diagram, the FooDirective will instantiate communications between the FooController and pages in HTML encapsulating capability. 
+
+I know many people have upgraded to Angular2, (I myself included) but to stay on track with this capstone project I won't deviate. So the directives in AngularJS 1.x will encapsulate capability within the HTML template, Controller and Scope. 
+
+Good! Now that is out of the way, let me code. 
+
+I'll start by adding **foo.html** and a **foo.directive.js** in Rails. I'll add the angular directives in the latter and a basic html code with a span to let me know where the page is coming from in the fomer.
+
+You can see the same naming nomenclature of **camelCase** and **snake-case**. Javascript is really unforgiving in if you make typos. You see how I have injected the spa-demo and told it where to get it's template from? I reckon that's the only thing that may throw some people off in the code below. 
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo.foos")
+    .directive("sdFoos", FoosDirective);
+
+  FoosDirective.$inject = ["spa-demo.config.APP_CONFIG"];
+
+  function FoosDirective(APP_CONFIG) {
+    var directive = {
+        templateUrl: APP_CONFIG.foos_html,
+        replace: true,
+        bindToController: true,
+        controller: "spa-demo.foos.FoosController",
+        controllerAs: "foosVM",
+        restrict: "E",
+        scope: {},
+        link: link
+    };
+    return directive;
+
+    function link(scope, element, attrs) {
+      console.log("FoosDirective", scope);
+    }
+  }
+
+})();
+```
+
+Under the pages directory in Rails, I'll have to pass sd-foos in main.html and include the asset path in **app.constant.js**. 
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo")
+    .constant("spa-demo.APP_CONFIG", {
+    	server_url: "<%= ENV['RAILS_API_URL'] %>",
+
+      main_page_html: "<%= asset_path('spa-demo/pages/main.html') %>",
+
+      foos_html: "<%= asset_path('spa-demo/pages/main.html') %>"
+    });
+
+})();
+```
 
 
+I've registered the directives file in the manifest and added a script link on the external/client index page. Had a couple of errors thrown but fixed them and I can see my injection works and Foos is displayed.
 
+![Foos](https://user-images.githubusercontent.com/13242902/28137260-eb43a0e8-674c-11e7-9f64-248c0d17efe8.png)
+<hr>
+
+Likewise, I've added foos folder and files in the external environment and the angular injection is working just like in Rails. An error that was thrown in gulp was due to branch switching in git and I solved it by installing node package manager again. 
 
 
 
