@@ -1462,6 +1462,34 @@ At this point, our pages suck because they lack styling. Actually there is nothi
 
 I've created a **layout.css** that I've included in the **spa-demo.css** manifest. Added a bg color and stuff like that is pretty straight forward. 
 
+## List Resource Instances
+
+I will be displaying list of instances with ng-repeat and getting the list using $resource.querry() 
+
+Let me add some data in the backend. 
+
+
+![screen shot 2017-07-12 at 23 23 28](https://user-images.githubusercontent.com/13242902/28140599-3a9af658-6759-11e7-8f9c-c23898117b0e.png)
+<hr>
+
+In the Foos Controller I'll add **vm.foos = Foo.query();** to search the DB, then I'll add un-ordered list in **foos.html**.
+
+```html
+  <ul>
+    <li ng-repeat="foo in foosVM.foos | orderBy:'name'">
+      <a ng-click="foosVM.edit(foo)">{{foo.name}}</a>
+    </li>
+  </ul>
+```
+
+If I reload my page, life is good as far as communication from the DB via Controller, Foo Service and View. 
+
+I didn't reset my DB, thats why you see "janjaruka" on the page; which is not actually a bad thing to "janjaruka". It means get wise/creative/knowledgeable
+![view](https://user-images.githubusercontent.com/13242902/28140762-f3496c98-6759-11e7-9815-4e750eac5914.png)
+<hr>
+
+So in a nutshell, $resource.query() obtains instances from API and returns collection of proxies. It can wait on $promise within collection. 
+ng.repeat then iterates over a collection (as in the unordered list) and orderBy can be used to order elements displayed. 
 
 
 
