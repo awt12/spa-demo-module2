@@ -1456,7 +1456,11 @@ I've registered the directives file in the manifest and added a script link on t
 
 Likewise, I've added foos folder and files in the external environment and the angular injection is working just like in Rails. An error that was thrown in gulp was due to branch switching in git and I solved it by installing node package manager again. 
 
+## Sample CSS Styling 
 
+At this point, our pages suck because they lack styling. Actually there is nothing on the frontend so, I'll be adding some styling in Asset Pipeline and Gulp environmment, although I'll keep it to a minimum as that's not the purpose of this capstone. 
+
+I've created a **layout.css** that I've included in the **spa-demo.css** manifest. Added a bg color and stuff like that is pretty straight forward. 
 
 
 
