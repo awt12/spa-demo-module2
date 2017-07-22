@@ -1491,6 +1491,99 @@ I didn't reset my DB, thats why you see "janjaruka" on the page; which is not ac
 So in a nutshell, $resource.query() obtains instances from API and returns collection of proxies. It can wait on $promise within collection. 
 ng.repeat then iterates over a collection (as in the unordered list) and orderBy can be used to order elements displayed. 
 
+## Create Resource Instances
+
+In this segment, I'll be creating an instance of a resource and have it displayed on the browser. 
+I'll go through the first method callbacks into the view model which is the **create()**; then I'll touch on the resource save method ( **$resource.$save()** ). 
+
+I've created a form in **foos.html** with a create button. Upon clicking create button, I would like a create callback to be echoed at the controller. So I've done that and exposed my methods within the **foos.controller.js**. Most of this is AngularJS and I won't go in depth as this is not a tutorial (though it may be quite handy for intermediate/advanced Rails developers). I'll touch lightly on what I've done and well, you know where the code resides within the app. I'll just post some code snippets (Dotted lines above and below the code snippets means that code above and below is truncated).
+
+*foos.html*
+```html
+.......
+    <form>
+    <div>
+      <label>Name:</label>
+      <input name="name"
+              ng-model="foosVM.foo.name"
+              required="required"/>
+    </div>
+
+    <button ng-if="!foosVM.foo.id" 
+             type="submit"
+             ng-click="foosVM.create()">Create Foo</button>  
+    <div ng-if="foosVM.foo.id">
+      <button type="submit"
+              ng-click="foosVM.update()">Update Foo</button>
+      <button type="submit"
+              ng-click="foosVM.remove()">Delete Foo</button>
+    </div>               
+    </form>
+.......
+```
+
+*foos.controller.js*
+```javascript
+.......
+      function create() {
+        //console.log("creating foo", vm.foo);
+        vm.foo.$save()
+          .then(function(response){
+            //console.log(response);
+            vm.foos.push(vm.foo);
+            newFoo();
+          })
+          .catch(handleError);    
+      
+      }
+.......
+```
+
+Inputting data in the form and submitting it throws a bad request error in the console and the server complains saying "API Foos post method and but you passed me this body that I don't like".  
+
+![Foo_server_callback](https://user-images.githubusercontent.com/13242902/28488519-31c0203a-6eac-11e7-8ab8-a8107f329f92.png)
+<hr>
+
+What rails want is this hash  **Parameters: {"name"=>"y573567"}** scoped with a foo token. It needs to be embedded. I'll fix this within Angular side instead of Rails controller. To fix that I have expanded the customization of the foo service methods. 
+
+As much I had an update method mapped to a put, I'll augment, update and save with a custom body handler so that whatever would have gotten passed in, is going to be embedded inside of an additional hash with a foo key. 
+
+```javascript
+(function() {
+  "use strict";
+
+  angular
+    .module("spa-demo.foos")
+    .factory("spa-demo.foos.Foo", FooFactory);
+
+  FooFactory.$inject = ["$resource", "spa-demo.config.APP_CONFIG"];
+  function FooFactory($resource, APP_CONFIG) {
+    return $resource(APP_CONFIG.server_url + "/api/foos/:id",
+      { id: '@id'},
+      { 
+        update: { method: "PUT",
+                  transformRequest: buildNestedBody },
+        save: { method: "POST",
+                  transformRequest: buildNestedBody }
+      }
+      );
+  }
+
+  //nests the default payload below a "foo" element 
+  //as required by default by Rails API resources
+  function buildNestedBody(data) {
+   return angular.toJson({foo: data})
+  }  
+})();
+```
+
+
+
+Now that my object has been nested within foo I owe Angular a JSON doc (string) so I can actually return the string. Within *foos.html*, I implemented my unordered list with an **ng-repeat** ordered by name. And that's what HTML in concert  with Angular just did and displayed my "yada yada yada" input. 
+
+![Foo_Browser_Output](https://user-images.githubusercontent.com/13242902/28488769-b0075878-6eb1-11e7-92f5-fb350da69022.png)
+<hr>
+
 
 
 
