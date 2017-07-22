@@ -1679,6 +1679,15 @@ Now I'll go to the Localhost 3000 Client and pull it out of the public directory
 ![External_Public_Environment](https://user-images.githubusercontent.com/13242902/28489314-9e7e25b8-6ec1-11e7-9b28-97556284b71c.png)
 <hr>
 
+## SPA Application Deployments 
+
+It's time to deploy. I will be deploying;
+  - Heroku Rails Asset Pipeline 
+  - Heroku Rails /public (External Packaging in puclic directory)
+  - GitHub Pages
+
+
+
 
 
 
