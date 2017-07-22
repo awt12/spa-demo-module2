@@ -1584,6 +1584,87 @@ Now that my object has been nested within foo I owe Angular a JSON doc (string) 
 ![Foo_Browser_Output](https://user-images.githubusercontent.com/13242902/28488769-b0075878-6eb1-11e7-92f5-fb350da69022.png)
 <hr>
 
+## Select and Update/Delete Resource Instance 
+
+Just like the normal Rails **CRUD** operations of data objects, I'll carry on from what I implemented previously in the **View Model callbacks** (Create) and quickly implement edit(), update() and remove(). 
+
+I'll also use **Conditional Elements** to integrate my modifications capabilities with my existing creation capabilities. 
+
+To maniplate an object, I want click it on the browser and change or manipulate it within the form data entry.
+
+I've added the various implementations within the foos.controller.js and after testing with delete, update, etc, everything works fine. The methodoloy of input, verifying with server and checking the cosnole for errors is similar to the previous *Create Resource Instance*. 
+
+The last function (removeElement) helper method will actually clear the object from the browser.
+
+```javascript
+
+........
+      function activate() {
+        newFoo();
+        vm.foos = Foo.query();
+      }
+
+      function newFoo() {
+        vm.foo = new Foo();
+      }
+      function handleError(response) {
+        console.log(response);
+      } 
+      function edit(object) {
+        console.log("selected", object);
+        vm.foo = object;        
+      }
+
+      function create() {
+        //console.log("creating foo", vm.foo);
+        vm.foo.$save()
+          .then(function(response){
+            //console.log(response);
+            vm.foos.push(vm.foo);
+            newFoo();
+          })
+          .catch(handleError);        
+      }
+
+      function update() {
+        //console.log("update", vm.foo);
+        vm.foo.$update()
+          .then(function(response){
+            //console.log(response);
+        })
+        .catch(handleError);        
+      }
+
+      function remove() {
+        //console.log("remove", vm.foo);
+        vm.foo.$delete()
+          .then(function(response){
+            //console.log(response);
+            //remove the element from local array
+            removeElement(vm.foos, vm.foo);
+            //vm.foos = Foo.query();
+            //replace edit area with prototype instance
+            newFoo();
+          })
+          .catch(handleError);                
+      }
+
+
+      function removeElement(elements, element) {
+        for (var i=0; i<elements.length; i++) {
+          if (elements[i].id == element.id) {
+            elements.splice(i,1);
+            break;
+          }        
+        }        
+      }      
+  }
+}();
+
+```
+
+At this point I can CReate, Update and Delete right from the Browser in the Asset Pipeline. 
+
 
 
 
