@@ -1686,6 +1686,11 @@ It's time to deploy. I will be deploying;
   - Heroku Rails /public (External Packaging in puclic directory)
   - GitHub Pages
 
+To keep the stone rolling (it shouldn't gather any moss untill we are done), I'm going to push through my staging hub, my foos UI branch to its master because Heroku deploys off of master. 
+
+Deployment goes well without hitches when deployed to the staging branch. The external public client doesnt seem to be responding though and some tweakingnis required. The console throws instantiation errors due to Angular module injection; I will get to that momentariy, but now I'll open the **script.js**which resides in the public/client/client-assets path and sort some issues out. 
+
+
 
 
 
