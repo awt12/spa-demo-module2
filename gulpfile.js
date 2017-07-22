@@ -56,7 +56,7 @@ var cfg={
   vendor_fonts : { bld: vendorBuildPath + "/stylesheets/fonts" }, 
 
   apiUrl: { dev: "http://localhost:3000",
-            prd: "https://glacial-earth-69618.herokuapp.com"},
+            prd: "https://josembi-jhu.herokuapp.com"},
 };
 
 //files within these paths will be served as root-level resources in this priority order

@@ -1665,6 +1665,23 @@ The last function (removeElement) helper method will actually clear the object f
 
 At this point I can CReate, Update and Delete right from the Browser in the Asset Pipeline. 
 
+## Sample Application in External Environment
+
+At this point, I'll do a sanity check to see whether everything works well as required within the environments as they do in Asset Pipeline. 
+
+I'll start by copying the modified files from the Asset Pipeline to  external. I ran my Gulp distribution and ran into errors, {spent a considerable amount of time :-( } but later on fixed it. Just make sure the external URL within *gulp.js* corresponds with your Heroku one. You can see below the external deployed to Browser Synch. [port 8080]
+
+![External_Gulp_Environment](https://user-images.githubusercontent.com/13242902/28489263-df7b2c0c-6ebf-11e7-8757-4e776fa30a2f.png)
+<hr>
+
+Now I'll go to the Localhost 3000 Client and pull it out of the public directory and see if everything works as well, just to kick the tires I'll add some data, delete, modify and make sure everything works as put together by the directives. 
+
+![External_Public_Environment](https://user-images.githubusercontent.com/13242902/28489314-9e7e25b8-6ec1-11e7-9b28-97556284b71c.png)
+<hr>
+
+
+
+
 
 
 

@@ -14,9 +14,10 @@
     .state("home",{
       url: "/",
       templateUrl: APP_CONFIG.main_page_html,
+      // controller: ,
+      // controllerAs: ,
     })
 
-
-        $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/");
   }
 })();
